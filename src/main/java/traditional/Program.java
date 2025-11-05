@@ -1,30 +1,27 @@
-package com.pluralsight;
+package traditional;
+
+import com.pluralsight.Person;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Person> people = loadList();
-        people.sort();
-        ArrayList<Person> matches = new ArrayList<>();
+
+
         double ages = 0;
 
-        System.out.println("Displaying list:");
-        for(Person person : people){
-            System.out.printf("%s|%s|%d",person.getFirstName(),person.getLastName(),person.getAge());
-            System.out.println();
-
-        }
-
+        System.out.println("Welcome to Hawkins Indiana ----");
 
         System.out.print("What is the name of the person? (first or last): ");
         String name = scanner.nextLine().trim().toLowerCase();
-
+        List<Person> matches = new ArrayList<>();
 
         for (Person person : people){
             if (person.getFirstName().equalsIgnoreCase(name)){
@@ -40,7 +37,27 @@ public class Program {
             System.out.println();
         }
 
-        System.out.println("The average age of in Hawkins is: "+ages/10);
+        int avgAge = 0;
+        int oldest = -1;
+        int youngest = 1000;
+
+        for (Person person: people) {
+            avgAge += person.getAge(); //transformation 1
+
+            if (person.getAge() > oldest) {
+                oldest = person.getAge();
+            }
+
+            if (person.getAge() < youngest) {
+                youngest = person.getAge();
+            }
+        }
+
+        //Transformation 2
+        System.out.println("Average Age of all People: " + avgAge / people.size());
+
+        System.out.println("Oldest Age of all People: " + oldest);
+        System.out.println("Youngest Age of all People: " + youngest);
 
 
     }
