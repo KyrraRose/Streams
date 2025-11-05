@@ -4,11 +4,25 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Program {
     public static void main(String[] args) {
-        loadList();
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Person> people = loadList();
 
+        System.out.print("Welcome to the people book!\nWhat is the name of the person? (first or last): ");
+        String name = scanner.nextLine().trim().toLowerCase();
+
+
+        for (Person person : people){
+            if (person.getFirstName().contains(name)){
+                System.out.println("fname matches");
+            } else if (person.getLastName().contains(name)) {
+                
+            }
+
+        }
 
 
     }
