@@ -10,6 +10,7 @@ public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Person> people = loadList();
+        people.sort();
         ArrayList<Person> matches = new ArrayList<>();
         double ages = 0;
 
@@ -17,7 +18,9 @@ public class Program {
         for(Person person : people){
             System.out.printf("%s|%s|%d",person.getFirstName(),person.getLastName(),person.getAge());
             System.out.println();
+
         }
+
 
         System.out.print("What is the name of the person? (first or last): ");
         String name = scanner.nextLine().trim().toLowerCase();
