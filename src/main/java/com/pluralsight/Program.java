@@ -10,6 +10,8 @@ public class Program {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ArrayList<Person> people = loadList();
+        ArrayList<Person> matches = new ArrayList<>();
+        double ages = 0;
 
         System.out.print("Welcome to the people book!\nWhat is the name of the person? (first or last): ");
         String name = scanner.nextLine().trim().toLowerCase();
@@ -17,10 +19,15 @@ public class Program {
 
         for (Person person : people){
             if (person.getFirstName().contains(name)){
-                System.out.println("fname matches");
+                matches.add(person);
             } else if (person.getLastName().contains(name)) {
-                
+                matches.add(person);
             }
+            ages += person.getAge();
+        }
+
+        for(Person person : matches){
+            System.out.printf("%s|%s|%d",person.getFirstName(),person.getLastName(),person.getAge());
 
         }
 
