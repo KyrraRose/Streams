@@ -7,10 +7,12 @@ import java.util.ArrayList;
 
 public class Program {
     public static void main(String[] args) {
+        loadList();
+
 
 
     }
-    public ArrayList<Person> loadList(){
+    public static  ArrayList<Person> loadList(){
         try {
             ArrayList<Person> people = new ArrayList<>();
             BufferedReader buffReader = new BufferedReader(new FileReader("src/main/resources/people.csv"));
@@ -24,12 +26,14 @@ public class Program {
                 last = token[1];
                 age = Integer.parseInt(token[2]);
 
-                people.add(first,last,age);
+                people.add(new Person(first,last,age));
 
             }
             return people;
         } catch (IOException e) {
             System.out.println(e.getMessage());
+            return null;
         }
+
     }
 }
