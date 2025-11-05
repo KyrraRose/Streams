@@ -13,14 +13,20 @@ public class Program {
         ArrayList<Person> matches = new ArrayList<>();
         double ages = 0;
 
-        System.out.print("Welcome to the people book!\nWhat is the name of the person? (first or last): ");
+        System.out.println("Displaying list:");
+        for(Person person : people){
+            System.out.printf("%s|%s|%d",person.getFirstName(),person.getLastName(),person.getAge());
+            System.out.println();
+        }
+
+        System.out.print("What is the name of the person? (first or last): ");
         String name = scanner.nextLine().trim().toLowerCase();
 
 
         for (Person person : people){
-            if (person.getFirstName().contains(name)){
+            if (person.getFirstName().equalsIgnoreCase(name)){
                 matches.add(person);
-            } else if (person.getLastName().contains(name)) {
+            } else if (person.getLastName().equalsIgnoreCase(name)) {
                 matches.add(person);
             }
             ages += person.getAge();
@@ -28,8 +34,10 @@ public class Program {
 
         for(Person person : matches){
             System.out.printf("%s|%s|%d",person.getFirstName(),person.getLastName(),person.getAge());
-
+            System.out.println();
         }
+
+        System.out.println("The average age of in Hawkins is: "+ages/10);
 
 
     }
